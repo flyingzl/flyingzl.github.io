@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 记录点滴生活，每天进步一点点
-subtitle: 个人博客
-description: Larry Zhao的个人博客，谈生活，聊技术，快乐每一天
+title: Asyncoder
+subtitle: Asyncoder个人博客
+description: 谈生活，聊技术，快乐每一天
 keywords: Vue,Webpack,JavaScript,Flutter
-author: Larry Zhao
+author: Asyncoder
 language: zh-CN
 timezone: Asia/Shanghai
 
