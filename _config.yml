@@ -103,8 +103,8 @@ theme: hexo-theme-matery
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
-deploy:
-  type: ''
+# deploy:
+#   type: ''
 
 search:
   path: search.xml
@@ -139,3 +139,10 @@ feed:
   content_limit: 140
   content_limit_delim: ' '
   order_by: -date
+
+
+deploy:
+  type: git
+  repo: git@github.com:flyingzl/asyncoder.github.io.git
+  branch: master
+  message: 更新文章
