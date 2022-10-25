@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>记录点滴生活，每天进步一点点</title>
+  
+  <subtitle>个人博客</subtitle>
+  <link href="https://blog.asyncoder.com/atom.xml" rel="self"/>
+  
+  <link href="https://blog.asyncoder.com/"/>
+  <updated>2022-10-25T09:23:50.084Z</updated>
+  <id>https://blog.asyncoder.com/</id>
+  
+  <author>
+    <name>Larry Zhao</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>聊聊WebTransport</title>
+    <link href="https://blog.asyncoder.com/2021/02/03/liao-liao-webtransport/"/>
+    <id>https://blog.asyncoder.com/2021/02/03/liao-liao-webtransport/</id>
+    <published>2021-02-03T07:00:00.000Z</published>
+    <updated>2022-10-25T09:23:50.084Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;h3 id=&quot;WebTransport-是什么？&quot;&gt;&lt;a href=&quot;#WebTransport-是什么？&quot; class=&quot;headerlink&quot; title=&quot;WebTransport 是什么？&quot;&gt;&lt;/a&gt;WebTransport 是什么？&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://w3c.github.io/webtransport/&quot;&gt;WebTransport&lt;/a&gt;是浏览器提供的一套基于&lt;a href=&quot;https://tools.ietf.org/html/draft-ietf-quic-transport-34&quot;&gt;QUIC&lt;/a&gt;协议的 API 接口，方便浏览器和服务器之间进行实时数据传输，它填补了 Web 平台中的一些空白：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;  缺少类似 UDP 的网络 API&lt;/li&gt;
+&lt;li&gt;  缺少类似于 WebSocket 但不受队头阻塞影响（Head of Line Blocking）的 API&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;WebTransport-特性&quot;&gt;&lt;a href=&quot;#WebTransport-特性&quot; class=&quot;headerlink&quot; title=&quot;WebTransport 特性&quot;&gt;&lt;/a&gt;WebTransport 特性&lt;/h3&gt;&lt;p&gt;Webtransport 基于 QUIC 协议，其底层是 UDP。虽然是 UDP 是不可靠的传输协议，但是 QUIC 在 UDP 的基础上融合了 TCP、TLS、HTTP/2 等协议的特性，使得 QUIC 成为一种低时延、安全可靠的传输协议。可以简单理解 QUIC 把 TCP+TLS 的功能基于 UDP 重新实现了一遍。&lt;/p&gt;
+&lt;p&gt;WebTransport 提供了如下功能特性：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;  传输可靠数据流 （类似 TCP）&lt;/li&gt;
+&lt;li&gt;  传输不可靠数据流（类似 UDP）&lt;/li&gt;
+&lt;li&gt;  数据加密和拥塞控制（congestion control）&lt;/li&gt;
+&lt;li&gt;  基于 Origin 的安全模型（校验请求方是否在白名单内，类似于 CORS 的&lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Access-Control-Allow-Origin&quot;&gt;Access-Control-Allow-Origin&lt;/a&gt;）&lt;/li&gt;
+&lt;li&gt;  支持多路复用（类似于 HTTP2 的 Stream）&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="前端技术" scheme="https://blog.asyncoder.com/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="JavaScript" scheme="https://blog.asyncoder.com/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Docker使用简易指南</title>
+    <link href="https://blog.asyncoder.com/2020/12/11/docker-shi-yong-jian-yi-zhi-nan/"/>
+    <id>https://blog.asyncoder.com/2020/12/11/docker-shi-yong-jian-yi-zhi-nan/</id>
+    <published>2020-12-11T07:00:00.000Z</published>
+    <updated>2022-10-25T09:32:57.322Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Docker-是什么？&quot;&gt;&lt;a href=&quot;#Docker-是什么？&quot; class=&quot;headerlink&quot; title=&quot;Docker 是什么？&quot;&gt;&lt;/a&gt;Docker 是什么？&lt;/h2&gt;&lt;h3 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="系统软件" scheme="https://blog.asyncoder.com/categories/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+    <category term="Docker" scheme="https://blog.asyncoder.com/tags/Docker/"/>
+    
+    <category term="Node.js" scheme="https://blog.asyncoder.com/tags/Node-js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Electron开发小结</title>
+    <link href="https://blog.asyncoder.com/2020/09/11/electron-kai-fa-xiao-jie/"/>
+    <id>https://blog.asyncoder.com/2020/09/11/electron-kai-fa-xiao-jie/</id>
+    <published>2020-09-11T05:00:00.000Z</published>
+    <updated>2022-10-25T09:26:44.993Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;最近基于Electron开发了一个音视频应用，遇到了一些坑，特此记录下，希望可以帮助后续的同学。&lt;/p&gt;
+&lt;h2 id=&quot;Electron下载慢&quot;&gt;&lt;a href=&quot;#Electron下载慢&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="前端技术" scheme="https://blog.asyncoder.com/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="JavaScript" scheme="https://blog.asyncoder.com/tags/JavaScript/"/>
+    
+    <category term="Node.js" scheme="https://blog.asyncoder.com/tags/Node-js/"/>
+    
+    <category term="Electron" scheme="https://blog.asyncoder.com/tags/Electron/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>FFmpeg介绍</title>
+    <link href="https://blog.asyncoder.com/2020/08/14/ffmpeg-jie-shao/"/>
+    <id>https://blog.asyncoder.com/2020/08/14/ffmpeg-jie-shao/</id>
+    <published>2020-08-14T09:00:00.000Z</published>
+    <updated>2022-10-25T09:41:09.835Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;A complete, cross-platform solution to record, convert and stream audio and video.&lt;/p&gt;
+&lt;p&gt;FFmpeg是一个音视频流录制、转换的跨平台的完整开源解决方案&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="系统软件" scheme="https://blog.asyncoder.com/categories/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+    <category term="媒体处理" scheme="https://blog.asyncoder.com/tags/%E5%AA%92%E4%BD%93%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac上编译openSSL到WebAssembly</title>
+    <link href="https://blog.asyncoder.com/2020/01/02/mac-shang-bian-yi-openssl-dao-webassembly/"/>
+    <id>https://blog.asyncoder.com/2020/01/02/mac-shang-bian-yi-openssl-dao-webassembly/</id>
+    <published>2020-01-02T09:30:00.000Z</published>
+    <updated>2022-10-25T09:48:23.794Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;最近想利用WebAssembly来调用OpenSSL里面的MD5加密库，采用如下命令进行编译：&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-bash&quot; data-language=&quot;bash&quot;&gt;&lt;code</summary>
+        
+      
+    
+    
+    
+    <category term="前端技术" scheme="https://blog.asyncoder.com/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="JavaScript" scheme="https://blog.asyncoder.com/tags/JavaScript/"/>
+    
+    <category term="WASM" scheme="https://blog.asyncoder.com/tags/WASM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>WebAssembly简介</title>
+    <link href="https://blog.asyncoder.com/2019/12/20/webassembly-jian-jie/"/>
+    <id>https://blog.asyncoder.com/2019/12/20/webassembly-jian-jie/</id>
+    <published>2019-12-20T09:00:00.000Z</published>
+    <updated>2022-10-25T09:50:10.756Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;WebAssembly是一个可移植、体积小、加载快并且兼容 Web 的全新二进制格式，其文件后缀名为wasm，是由主流浏览器厂商组成的 W3C 社区团体 制定的一个新的规范。&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="前端技术" scheme="https://blog.asyncoder.com/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="JavaScript" scheme="https://blog.asyncoder.com/tags/JavaScript/"/>
+    
+    <category term="WASM" scheme="https://blog.asyncoder.com/tags/WASM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>获取新浪微博用户头像</title>
+    <link href="https://blog.asyncoder.com/2019/12/06/huo-qu-xin-lang-wei-bo-yong-hu-tou-xiang/"/>
+    <id>https://blog.asyncoder.com/2019/12/06/huo-qu-xin-lang-wei-bo-yong-hu-tou-xiang/</id>
+    <published>2019-12-06T06:20:00.000Z</published>
+    <updated>2022-10-25T09:51:49.224Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;在之前的&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="前端技术" scheme="https://blog.asyncoder.com/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="媒体处理" scheme="https://blog.asyncoder.com/tags/%E5%AA%92%E4%BD%93%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>whistle使用介绍</title>
+    <link href="https://blog.asyncoder.com/2019/11/29/whistle-shi-yong-jie-shao/"/>
+    <id>https://blog.asyncoder.com/2019/11/29/whistle-shi-yong-jie-shao/</id>
+    <published>2019-11-29T07:00:00.000Z</published>
+    <updated>2022-10-25T09:54:20.663Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;whistle(读音[ˈwɪsəl])基于Node实现的跨平台web调试代理工具，类似的工具有Windows平台上的Fiddler和Mac上的Charles，主要用于查看、修改HTTP、HTTPS、Websocket的请求、响应，也可以作为HTTP代理服务器使用。&lt;/p&gt;
+</summary>
+        
+      
+    
+    
+    
+    <category term="前端技术" scheme="https://blog.asyncoder.com/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="JavaScript" scheme="https://blog.asyncoder.com/tags/JavaScript/"/>
+    
+    <category term="Web调试" scheme="https://blog.asyncoder.com/tags/Web%E8%B0%83%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Broadcast Channel简介</title>
+    <link href="https://blog.asyncoder.com/2019/07/26/broadcast-channel-jian-jie/"/>
+    <id>https://blog.asyncoder.com/2019/07/26/broadcast-channel-jian-jie/</id>
+    <published>2019-07-26T09:30:00.000Z</published>
+    <updated>2022-10-25T09:55:09.571Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;在前端，我们经常会用&lt;code&gt;postMessage&lt;/code&gt;来实现页面间的点对点通信，对于一些需要广播（让所有页面知道）的消息，用&lt;code&gt;postMessage&lt;/code&gt;无法满足需求。&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="前端技术" scheme="https://blog.asyncoder.com/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="JavaScript" scheme="https://blog.asyncoder.com/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微信推送</title>
+    <link href="https://blog.asyncoder.com/2019/07/19/wei-xin-tui-song/"/>
+    <id>https://blog.asyncoder.com/2019/07/19/wei-xin-tui-song/</id>
+    <published>2019-07-19T09:30:00.000Z</published>
+    <updated>2022-10-25T09:23:44.300Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;公众号推送&quot;&gt;&lt;a href=&quot;#公众号推送&quot; class=&quot;headerlink&quot; title=&quot;公众号推送&quot;&gt;&lt;/a&gt;公众号推送&lt;/h2&gt;&lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="前端技术" scheme="https://blog.asyncoder.com/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="Vue" scheme="https://blog.asyncoder.com/tags/Vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在微信H5网页中获取用户基本信息</title>
+    <link href="https://blog.asyncoder.com/2018/09/21/zai-wei-xin-h5-wang-ye-zhong-huo-qu-yong-hu-ji-ben-xin-xi/"/>
+    <id>https://blog.asyncoder.com/2018/09/21/zai-wei-xin-h5-wang-ye-zhong-huo-qu-yong-hu-ji-ben-xin-xi/</id>
+    <published>2018-09-21T06:12:31.000Z</published>
+    <updated>2022-10-25T09:56:24.400Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;在微信中访问一些HTML5网页时，我们常看到是否允许访问用户公开信息的提示。如果用户点击“允许”，网页就可以获取到用户的头像以及昵称等信息。&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="前端技术" scheme="https://blog.asyncoder.com/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="JavaScript" scheme="https://blog.asyncoder.com/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用Golang玩转WebAssembly</title>
+    <link href="https://blog.asyncoder.com/2018/08/27/li-yong-golang-wan-zhuan-webassembly/"/>
+    <id>https://blog.asyncoder.com/2018/08/27/li-yong-golang-wan-zhuan-webassembly/</id>
+    <published>2018-08-27T06:07:51.000Z</published>
+    <updated>2022-10-25T09:57:57.978Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;WebAssembly，也叫WAMS，是一个可移植、体积小、加载快并且兼容 Web 的全新二进制格式，可以将C/C++/Rust等语言编写的代码编译为wasm文件然后运行在Web上。&lt;/p&gt;
+&lt;p&gt;用C/C++写wasm有点麻烦，需要安装各种编译器。话说最新&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="后端技术" scheme="https://blog.asyncoder.com/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="WASM" scheme="https://blog.asyncoder.com/tags/WASM/"/>
+    
+    <category term="Go" scheme="https://blog.asyncoder.com/tags/Go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>记一次Vue中的v-for踩坑之旅</title>
+    <link href="https://blog.asyncoder.com/2018/07/20/ji-yi-ci-vue-zhong-de-v-for-cai-keng-zhi-lu/"/>
+    <id>https://blog.asyncoder.com/2018/07/20/ji-yi-ci-vue-zhong-de-v-for-cai-keng-zhi-lu/</id>
+    <published>2018-07-20T09:30:00.000Z</published>
+    <updated>2022-10-25T09:59:49.942Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;用过Vue的同学都知道，&lt;code&gt;v-for&lt;/code&gt;指令常用于遍历数组或者对象，然后依次渲染出指定的内容。同时，我们也知道，官方文档也建议，在使用&lt;code&gt;v-for&lt;/code&gt;指令时，记得要加上&lt;code&gt;key&lt;/code&gt;属性，方便提升应用性能。例如一个简</summary>
+        
+      
+    
+    
+    
+    <category term="前端技术" scheme="https://blog.asyncoder.com/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="Vue" scheme="https://blog.asyncoder.com/tags/Vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>你真的了解Javascript执行顺序么？</title>
+    <link href="https://blog.asyncoder.com/2018/07/17/ni-zhen-de-liao-jie-javascript-zhi-xing-shun-xu-me/"/>
+    <id>https://blog.asyncoder.com/2018/07/17/ni-zhen-de-liao-jie-javascript-zhi-xing-shun-xu-me/</id>
+    <published>2018-07-17T01:37:22.000Z</published>
+    <updated>2022-10-25T10:05:38.452Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="前端技术" scheme="https://blog.asyncoder.com/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="JavaScript" scheme="https://blog.asyncoder.com/tags/JavaScript/"/>
+    
+    <category term="Node.js" scheme="https://blog.asyncoder.com/tags/Node-js/"/>
+    
+    <category term="Vue" scheme="https://blog.asyncoder.com/tags/Vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用OpenSSL创建自签名证书</title>
+    <link href="https://blog.asyncoder.com/2018/07/10/li-yong-openssl-chuang-jian-zi-qian-ming-zheng-shu/"/>
+    <id>https://blog.asyncoder.com/2018/07/10/li-yong-openssl-chuang-jian-zi-qian-ming-zheng-shu/</id>
+    <published>2018-07-09T16:00:00.000Z</published>
+    <updated>2022-10-25T10:06:48.116Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;生成CA证书&quot;&gt;&lt;a href=&quot;#生成CA证书&quot; class=&quot;headerlink&quot; title=&quot;生成CA证书&quot;&gt;&lt;/a&gt;生成CA证书&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;创建CA证书私钥&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&quot;line-numbers</summary>
+        
+      
+    
+    
+    
+    <category term="系统软件" scheme="https://blog.asyncoder.com/categories/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+    <category term="Node.js" scheme="https://blog.asyncoder.com/tags/Node-js/"/>
+    
+    <category term="OpenSSL" scheme="https://blog.asyncoder.com/tags/OpenSSL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Webpack中的require.context妙用</title>
+    <link href="https://blog.asyncoder.com/2018/07/08/webpack-zhong-de-require.context-miao-yong/"/>
+    <id>https://blog.asyncoder.com/2018/07/08/webpack-zhong-de-require.context-miao-yong/</id>
+    <published>2018-07-07T16:00:00.000Z</published>
+    <updated>2022-10-25T09:23:44.125Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;require-context简介&quot;&gt;&lt;a href=&quot;#require-context简介&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="前端技术" scheme="https://blog.asyncoder.com/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="Vue" scheme="https://blog.asyncoder.com/tags/Vue/"/>
+    
+    <category term="Webpack" scheme="https://blog.asyncoder.com/tags/Webpack/"/>
+    
+  </entry>
+  
+</feed>

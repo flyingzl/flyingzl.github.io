@@ -1,0 +1,1387 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="FFmpeg介绍, Vue,Webpack,JavaScript,Flutter">
+    <meta name="description" content="Larry Zhao的个人博客，谈生活，聊技术，快乐每一天">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>FFmpeg介绍 | 记录点滴生活，每天进步一点点</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="记录点滴生活，每天进步一点点" type="application/atom+xml">
+</head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">记录点滴生活，每天进步一点点</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">记录点滴生活，每天进步一点点</div>
+        <div class="logo-desc">
+            
+            Larry Zhao的个人博客，谈生活，聊技术，快乐每一天
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/flyingzl" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/flyingzl" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">FFmpeg介绍</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E5%AA%92%E4%BD%93%E5%A4%84%E7%90%86/">
+                                <span class="chip bg-color">媒体处理</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6/" class="post-category">
+                                系统软件
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-08-14
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>A complete, cross-platform solution to record, convert and stream audio and video.</p>
+<p>FFmpeg是一个音视频流录制、转换的跨平台的完整开源解决方案</p>
+<p><img src="https://g.asyncoder.com/images/20200816205600-gTO9QB.jpg"></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>访问 <a target="_blank" rel="noopener" href="https://ffmpeg.org/download.html">FFmpeg官网</a> 进行安装</p>
+<h3 id="FFmpeg家族工具"><a href="#FFmpeg家族工具" class="headerlink" title="FFmpeg家族工具"></a>FFmpeg家族工具</h3><ul>
+<li>ffmpeg: 音视频编解码命令行工具</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ffmpeg <span class="token parameter variable">-i</span> input.avi output.mp4<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>ffmpeg通过-i参数将input.avi作为输入源，然后进行转码与转封装操作，输出到output.mp4中。ffmpeg转码工作流程如下图。</p>
+<p><img src="https://pic1.zhimg.com/v2-91ae26021ae6e983befb45064669e61f_r.jpg"></p>
+<ul>
+<li>ffplay: 基于FFmpeg的播放器，可以播放本地或者网络视频流</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ffplay http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>ffprobe: 强大的多媒体分析工具</li>
+</ul>
+<p><code>ffprobe</code>可以从媒体文件或者媒体流程中获得媒体信息，比如音频的参数、视频的参数、媒体容器的参数信息等。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># ffprobe sheep.mp4 -hide_banner</span>
+
+Input <span class="token comment">#0, mov,mp4,m4a,3gp,3g2,mj2, from 'out.mp4':</span>
+  Metadata:
+    major_brand     <span class="token builtin class-name">:</span> isom
+    minor_version   <span class="token builtin class-name">:</span> <span class="token number">512</span>
+    compatible_brands: isomiso2avc1mp41
+    encoder         <span class="token builtin class-name">:</span> Lavf58.20.100
+  Duration: 00:00:05.63, start: <span class="token number">0.000000</span>, bitrate: <span class="token number">1845</span> kb/s
+    Stream <span class="token comment">#0:0(und): Video: h264 (High) (avc1 / 0x31637661), yuv420p, 3360x2100, 1781 kb/s, 29.81 fps, 30 tbr, 16k tbn, 2000k tbc (default)</span>
+    Metadata:
+      handler_name    <span class="token builtin class-name">:</span> VideoHandler
+    Stream <span class="token comment">#0:1(und): Audio: vorbis (mp4a / 0x6134706D), 48000 Hz, mono, fltp, 63 kb/s (default)</span>
+    Metadata:
+      handler_name    <span class="token builtin class-name">:</span> SoundHandler<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="一些概念"><a href="#一些概念" class="headerlink" title="一些概念"></a>一些概念</h3><p><img src="https://pic2.zhimg.com/v2-3e634d74b5ff73fd3bf7be9b8798dc21_r.jpg"></p>
+<p>不少同学可能会把「编码(codec)」和「格式(format)」混为一谈，因为编码和格式的命名有不少相同的，但其实他们是两个不同的概念。为了方便理解，可以将牛奶加工和音频视频的编码和格式做个对比。</p>
+<p><img src="https://pic3.zhimg.com/v2-979052f127337ce1820f13a1b21dac52_r.jpg"></p>
+<h2 id="功能展现"><a href="#功能展现" class="headerlink" title="功能展现"></a>功能展现</h2><h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ffmpeg <span class="token parameter variable">-h</span>
+
+Hyper fast Audio and Video encoder
+usage: ffmpeg <span class="token punctuation">[</span>options<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>infile options<span class="token punctuation">]</span> <span class="token parameter variable">-i</span> infile<span class="token punctuation">]</span><span class="token punctuation">..</span>. <span class="token punctuation">{</span><span class="token punctuation">[</span>outfile options<span class="token punctuation">]</span> outfile<span class="token punctuation">}</span><span class="token punctuation">..</span>.
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>使用风格为 <code>ffmpeg {1} {2} -i {3} {4} {5}</code>，这五个部分的参数依次如下：</p>
+<ul>
+<li>全局参数</li>
+<li>输入文件参数</li>
+<li>输入文件</li>
+<li>输出文件参数</li>
+<li>输出文件</li>
+</ul>
+<p>也就是 <code>ffmpeg [全局参数] [输入文件参数] -i [输入文件] [输出文件参数] [输出文件]</code></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ ffmpeg <span class="token punctuation">\</span>
+<span class="token parameter variable">-y</span> <span class="token punctuation">\</span> <span class="token comment"># 全局参数</span>
+<span class="token parameter variable">-c:a</span> libfdk_aac <span class="token parameter variable">-c:v</span> libx264 <span class="token punctuation">\</span> <span class="token comment"># 输入文件参数</span>
+<span class="token parameter variable">-i</span> input.mp4 <span class="token punctuation">\</span> <span class="token comment"># 输入文件</span>
+<span class="token parameter variable">-c:v</span> libvpx-vp9 <span class="token parameter variable">-c:a</span> libvorbis <span class="token punctuation">\</span> <span class="token comment"># 输出文件参数</span>
+output.webm <span class="token comment"># 输出文件</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="查看格式容器（Muxer-and-Demuxer）"><a href="#查看格式容器（Muxer-and-Demuxer）" class="headerlink" title="查看格式容器（Muxer and Demuxer）"></a>查看格式容器（Muxer and Demuxer）</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ffmpeg <span class="token parameter variable">-muxers</span>
+ffmpeg <span class="token parameter variable">-demuxers</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p><code>mp4</code>、<code>mkv</code>、<code>webm</code>、<code>avi</code>、<code>ogg</code>等都是格式容器</p>
+<h3 id="查看编码器和解码器"><a href="#查看编码器和解码器" class="headerlink" title="查看编码器和解码器"></a>查看编码器和解码器</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ffmpeg <span class="token parameter variable">-encoders</span>
+
+ffmpeg <span class="token parameter variable">-decoders</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><code>H.264</code>、<code>H.265</code>、<code>VP8</code>、<code>VP9</code>、<code>MP3</code>、<code>AAC</code> 都是编码格式</p>
+<h3 id="录屏"><a href="#录屏" class="headerlink" title="录屏"></a>录屏</h3><p><a target="_blank" rel="noopener" href="https://trac.ffmpeg.org/wiki/Capture/Capture/Desktop%E4%B8%AD%E6%96%87%E7%89%88%E6%9C%AC">https://trac.ffmpeg.org/wiki/Capture/Capture/Desktop%E4%B8%AD%E6%96%87%E7%89%88%E6%9C%AC</a></p>
+<p>以Mac系统为例</p>
+<ol>
+<li>查看系统设备</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># ffmpeg -f avfoundation -list_devices true -hide_banner  -i ""</span>
+
+<span class="token punctuation">[</span>AVFoundation indev @ 0x7fe828e07c40<span class="token punctuation">]</span> AVFoundation video devices:
+<span class="token punctuation">[</span>AVFoundation indev @ 0x7fe828e07c40<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> FaceTime高清摄像头（内建）
+<span class="token punctuation">[</span>AVFoundation indev @ 0x7fe828e07c40<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> Capture <span class="token function">screen</span> <span class="token number">0</span>
+<span class="token punctuation">[</span>AVFoundation indev @ 0x7fe828e07c40<span class="token punctuation">]</span> AVFoundation audio devices:
+<span class="token punctuation">[</span>AVFoundation indev @ 0x7fe828e07c40<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> Screenflick Loopback
+<span class="token punctuation">[</span>AVFoundation indev @ 0x7fe828e07c40<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> 外置麦克风
+<span class="token punctuation">[</span>AVFoundation indev @ 0x7fe828e07c40<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> MacBook Pro麦克风
+<span class="token punctuation">[</span>AVFoundation indev @ 0x7fe828e07c40<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> ZoomAudioDevice<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="2">
+<li>进行视频播放，增加水印</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ffmpeg <span class="token parameter variable">-y</span> <span class="token parameter variable">-f</span> avfoundation <span class="token parameter variable">-framerate</span> <span class="token number">30</span> <span class="token parameter variable">-i</span> <span class="token string">"1:1"</span> <span class="token parameter variable">-i</span> smile.png <span class="token parameter variable">-filter_complex</span> <span class="token assign-left variable">overlay</span><span class="token operator">=</span><span class="token string">"64:64"</span> output.mkv<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这里的<code>1:1</code>表示第一步中的所有号，也就是<code>Capture screen 0</code>和 <code>外置麦克风</code></p>
+<h3 id="查看文件编码信息"><a href="#查看文件编码信息" class="headerlink" title="查看文件编码信息"></a>查看文件编码信息</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">
+<span class="token comment"># ffmpeg -i out.mp4  -hide_banner</span>
+Input <span class="token comment">#0, mov,mp4,m4a,3gp,3g2,mj2, from 'out.mp4':</span>
+  Metadata:
+    major_brand     <span class="token builtin class-name">:</span> isom
+    minor_version   <span class="token builtin class-name">:</span> <span class="token number">512</span>
+    compatible_brands: isomiso2avc1mp41
+    encoder         <span class="token builtin class-name">:</span> Lavf58.20.100
+  Duration: 00:00:05.63, start: <span class="token number">0.000000</span>, bitrate: <span class="token number">1845</span> kb/s
+    Stream <span class="token comment">#0:0(und): Video: h264 (High) (avc1 / 0x31637661), yuv420p, 3360x2100, 1781 kb/s, 29.81 fps, 30 tbr, 16k tbn, 2000k tbc (default)</span>
+    Metadata:
+      handler_name    <span class="token builtin class-name">:</span> VideoHandler
+    Stream <span class="token comment">#0:1(und): Audio: vorbis (mp4a / 0x6134706D), 48000 Hz, mono, fltp, 63 kb/s (default)</span>
+    Metadata:
+      handler_name    <span class="token builtin class-name">:</span> SoundHandler
+At least one output <span class="token function">file</span> must be specified<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="文件转码"><a href="#文件转码" class="headerlink" title="文件转码"></a>文件转码</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 转为HEVC/H.265编码</span>
+ffmpeg <span class="token parameter variable">-i</span> out.mkv <span class="token parameter variable">-c:v</span> libx265 h265.MP4
+
+<span class="token comment"># 转为H.264编码</span>
+ffmpeg <span class="token parameter variable">-i</span> out.mkv <span class="token parameter variable">-c:v</span> libx264 out.MP4<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="视频截图"><a href="#视频截图" class="headerlink" title="视频截图"></a>视频截图</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">
+<span class="token comment"># 在第5s的第一帧截图</span>
+ffmpeg <span class="token parameter variable">-ss</span> <span class="token number">5</span> <span class="token parameter variable">-i</span> output.mp4 <span class="token parameter variable">-vframes</span> <span class="token number">1</span> <span class="token parameter variable">-q:v</span> <span class="token number">2</span> out.png 
+
+<span class="token comment"># 从第1s开始截图，持续5s，每秒截一帧</span>
+ffmpeg <span class="token parameter variable">-ss</span> <span class="token number">1</span> <span class="token parameter variable">-i</span> output.mp4 <span class="token parameter variable">-t</span> <span class="token number">5</span> <span class="token parameter variable">-r</span> <span class="token number">1</span> output/out-%00d.png 
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>上面例子中，<code>-vframes 1</code>指定只截取一帧，<code>-q:v 2</code>表示输出的图片质量，一般是1到5之间（1 为质量最高）。</p>
+<h3 id="生成GIF"><a href="#生成GIF" class="headerlink" title="生成GIF"></a>生成GIF</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 从第2s开始，以每秒15帧的速度持续5s进行截图，然后生成gif</span>
+ffmpeg <span class="token parameter variable">-ss</span> 00:00:02.000 <span class="token parameter variable">-i</span> out.mp4 <span class="token parameter variable">-pix_fmt</span> rgb24 <span class="token parameter variable">-t</span> <span class="token number">5</span>  <span class="token parameter variable">-frames</span> <span class="token number">15</span> out.gif<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="视频裁剪"><a href="#视频裁剪" class="headerlink" title="视频裁剪"></a>视频裁剪</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 从第2s开始，连续剪5s然后生成新的视频</span>
+ffmpeg <span class="token parameter variable">-ss</span> <span class="token number">2</span> <span class="token parameter variable">-i</span> out.mp4 <span class="token parameter variable">-t</span> <span class="token number">5</span> new.mp4
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="加速、减速视频"><a href="#加速、减速视频" class="headerlink" title="加速、减速视频"></a>加速、减速视频</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 视频加速</span>
+ffmpeg <span class="token parameter variable">-i</span> output.mp4 <span class="token parameter variable">-vf</span> <span class="token string">"setpts=0.5*PTS"</span> new.mp4
+
+<span class="token comment"># 视频减速</span>
+ffmpeg <span class="token parameter variable">-i</span> output.mp4 <span class="token parameter variable">-vf</span> <span class="token string">"setpts=2*PTS"</span> new.mp4
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="音频文件增加图片"><a href="#音频文件增加图片" class="headerlink" title="音频文件增加图片"></a>音频文件增加图片</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ffmpeg <span class="token parameter variable">-loop</span> <span class="token number">1</span> <span class="token parameter variable">-i</span> smile.jpg <span class="token parameter variable">-i</span> input.mp3 <span class="token parameter variable">-c:v</span> libx264 <span class="token parameter variable">-c:a</span> aac <span class="token parameter variable">-b:a</span> 192k <span class="token parameter variable">-shortest</span> output.mp4<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令中，有两个输入文件，一个是封面图片cover.jpg，另一个是音频文件input.mp3。<code>-loop 1</code>参数表示图片无限循环，<code>-shortest</code>参数表示音频文件结束，输出视频就结束。</p>
+<h3 id="提取视频中的音频"><a href="#提取视频中的音频" class="headerlink" title="提取视频中的音频"></a>提取视频中的音频</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ffmpeg <span class="token parameter variable">-i</span> https://g.asyncoder.com/sheep.mp4 <span class="token parameter variable">-vn</span> <span class="token parameter variable">-y</span> out.mp3<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<h3 id="增加水印"><a href="#增加水印" class="headerlink" title="增加水印"></a>增加水印</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 在视频中间增加水印</span>
+ffmpeg <span class="token parameter variable">-i</span> output.mkv <span class="token parameter variable">-i</span> smile.png <span class="token parameter variable">-y</span> <span class="token parameter variable">-filter_complex</span> <span class="token assign-left variable">overlay</span><span class="token operator">=</span><span class="token string">"(main_w/2)-(overlay_w/2):(main_h/2)-(overlay_h)/2"</span> output.mp4<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p><code>overlay</code>用于设置水印位置， <code>main_w</code>和<code>main_h</code>表示视频宽度和高度, <code>overlay_w</code>和<code>overlay_h</code>表示水印宽度和高度</p>
+<h3 id="直播推流"><a href="#直播推流" class="headerlink" title="直播推流"></a>直播推流</h3><ul>
+<li>安装docker环境</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> pull alfg/nginx-rtmp
+<span class="token function">docker</span> run <span class="token parameter variable">-it</span> <span class="token parameter variable">-p</span> <span class="token number">1935</span>:1935 <span class="token parameter variable">-p</span> <span class="token number">8080</span>:80 <span class="token parameter variable">--rm</span> alfg/nginx-rtmp<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ul>
+<li>推流</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ffmpeg <span class="token parameter variable">-re</span>  <span class="token parameter variable">-stream_loop</span> <span class="token parameter variable">-1</span> <span class="token parameter variable">-i</span> ~/Movies/霸王龙.mp4  <span class="token parameter variable">-f</span> flv rtmp://l27.0.0.1:1935/stream/mp4<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><code>re</code>表示输入视频的帧率, <code>-stream_loop</code>表示循环播放的次数，<code>-</code>表示无限循环</p>
+<p>也可以增加水印</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ffmpeg <span class="token parameter variable">-re</span>  <span class="token parameter variable">-stream_loop</span> <span class="token parameter variable">-1</span> <span class="token parameter variable">-i</span> ~/Movies/霸王龙.mp4 <span class="token parameter variable">-i</span> smile.png <span class="token parameter variable">-filter_complex</span> <span class="token assign-left variable">overlay</span><span class="token operator">=</span><span class="token string">"(main_w/2)-(overlay_w/2):(main_h/2)-(overlay_h)/2"</span>  <span class="token parameter variable">-f</span> flv rtmp://l27.0.0.1:1935/stream/mp4<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>推流到腾讯云</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ffmpeg <span class="token parameter variable">-re</span>  <span class="token parameter variable">-stream_loop</span> <span class="token parameter variable">-1</span> <span class="token parameter variable">-i</span> ~/Movies/霸王龙.mp4 <span class="token parameter variable">-f</span> flv <span class="token string">'rtmp://103467.livepush.myqcloud.com/live/mp4?txSecret=1e040cdd5347f8ec0d12df305d3cfad9&amp;txTime=5F38A505'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>可以通过<code>https://103467.liveplay.myqcloud.com/live/mp4.flv</code>进行访问</p>
+<ul>
+<li>测试</li>
+</ul>
+<p>可以通过<code>ffplay rtmp://l27.0.0.1:1935/stream/mp4</code>进行测试，也可以访问<code>ffplay http://127.0.0.1:8080/live/mp4.m3u8</code>进行测试</p>
+<p><img src="https://g.asyncoder.com/images/20200814101839-YPRWCa.png"></p>
+<p><img src="https://g.asyncoder.com/images/20200814101605-1EtOgH.png"></p>
+<p><img src="https://g.asyncoder.com/images/20200814102307-KLm7ck.png"></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="http://einverne.github.io/post/2015/12/ffmpeg-first.html">ffmpeg 入门笔记</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2020/01/ffmpeg.html">FFmpeg 视频处理入门教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/137686779">刻意练习FFmpeg系列：音视频基础概念格式和编码
+</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/37516093">FFmpeg概述及编码支持</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/leisure_chn/p/10434209.html">FFmpeg中overlay滤镜用法-水印及画中画</a></li>
+<li><a target="_blank" rel="noopener" href="https://trac.ffmpeg.org/wiki/Capture/Capture/Desktop%E4%B8%AD%E6%96%87%E7%89%88%E6%9C%AC">ffmpeg录屏</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/alfg/docker-nginx-rtmp">docker-nginx-rtmp</a></li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Larry Zhao</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.asyncoder.com/2020/08/14/ffmpeg-jie-shao/">https://blog.asyncoder.com/2020/08/14/ffmpeg-jie-shao/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Larry Zhao</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E5%AA%92%E4%BD%93%E5%A4%84%E7%90%86/">
+                                    <span class="chip bg-color">媒体处理</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,wechat,weibo,douban" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/09/11/electron-kai-fa-xiao-jie/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Electron开发小结">
+                        
+                        <span class="card-title">Electron开发小结</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-09-11
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="post-category">
+                                    前端技术
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JavaScript/">
+                        <span class="chip bg-color">JavaScript</span>
+                    </a>
+                    
+                    <a href="/tags/Node-js/">
+                        <span class="chip bg-color">Node.js</span>
+                    </a>
+                    
+                    <a href="/tags/Electron/">
+                        <span class="chip bg-color">Electron</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/01/02/mac-shang-bian-yi-openssl-dao-webassembly/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Mac上编译openSSL到WebAssembly">
+                        
+                        <span class="card-title">Mac上编译openSSL到WebAssembly</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-02
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="post-category">
+                                    前端技术
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JavaScript/">
+                        <span class="chip bg-color">JavaScript</span>
+                    </a>
+                    
+                    <a href="/tags/WASM/">
+                        <span class="chip bg-color">WASM</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2018-2022</span>
+            
+            <span id="year">2018</span>
+            <a href="/about" target="_blank">Larry Zhao</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/flyingzl" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:flyingzl@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
