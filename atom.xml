@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>记录点滴生活，每天进步一点点</title>
+  <title>Asyncoder</title>
   
-  <subtitle>个人博客</subtitle>
+  <subtitle>Asyncoder个人博客</subtitle>
   <link href="https://blog.asyncoder.com/atom.xml" rel="self"/>
   
   <link href="https://blog.asyncoder.com/"/>
@@ -10,7 +10,7 @@
   <id>https://blog.asyncoder.com/</id>
   
   <author>
-    <name>Larry Zhao</name>
+    <name>Asyncoder</name>
     
   </author>
   
